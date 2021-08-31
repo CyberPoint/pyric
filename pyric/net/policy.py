@@ -25,6 +25,7 @@ genetlink.h and imports those defined in nl80211_c.
 NOTE: I only use the datatype ignoring minlength, maxlength
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'attributes'
 __license__ = 'GPLv3'

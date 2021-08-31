@@ -36,6 +36,7 @@ Requires:
   changes:
    See CHANGES in top-level directory
 """
+from __future__ import unicode_literals
 
 __name__ = 'pyric'
 __license__ = 'GPLv3'

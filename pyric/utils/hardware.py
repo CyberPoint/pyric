@@ -23,7 +23,9 @@ are permitted provided that the following conditions are met:
 Defines device hardware related functions: mac address, driver, chipset etc
 
 """
+from __future__ import unicode_literals
 
+from builtins import range
 __name__ = 'hardware'
 __license__ = 'GPLv3'
 __version__ = '0.0.5'
@@ -74,7 +76,7 @@ def randhw(ouis=None):
     if ouis is None or ouis == []:
         o = ":".join(['{0:02x}'.format(random.randint(0,255)) for _ in range(3)])
     else:
-        o = random.choice(ouis.keys())
+        o = random.choice(list(ouis.keys()))
     u = ":".join(['{0:02x}'.format(random.randint(0,255)) for _ in range(3)])
     return o + ':' + u
 

@@ -24,7 +24,10 @@ These are stored in the "data" files commands.help and attributes.help which are
 json files.
 
 """
+from __future__ import unicode_literals
 
+from builtins import str
+from builtins import range
 __name__ = 'nlhelp'
 __license__ = 'GPLv3'
 __version__ = '0.0.1'

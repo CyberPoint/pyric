@@ -28,6 +28,7 @@ are permitted provided that the following conditions are met:
     oui and the ulm
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'utils'
 __license__ = 'GPLv3'

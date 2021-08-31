@@ -26,6 +26,7 @@ are permitted provided that the following conditions are met:
   changes:
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'scripts'
 __license__ = 'GPLv3'

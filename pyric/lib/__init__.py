@@ -41,6 +41,7 @@ lib subpackage
   o libnl and libnl now report their own errors rather than use pyric.error
   o added support for NLA_SET
 """
+from __future__ import unicode_literals
 
 __name__ = 'lib'
 __license__ = 'GPLv3'

@@ -23,6 +23,7 @@ Basic wrappers providing functionality for socket creation/deletion and transfer
 i.e. send/recv w.r.t ioctl calls
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'libio'
 __license__ = 'GPLv3'

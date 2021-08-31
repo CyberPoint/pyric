@@ -30,7 +30,9 @@ NOTE:
   if the index does not exist
 
 """
+from __future__ import unicode_literals
 
+from builtins import bytes
 __name__ = 'rfkill'
 __license__ = 'GPLv3'
 __version__ = '0.0.1'

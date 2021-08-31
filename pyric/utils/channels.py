@@ -25,6 +25,7 @@ Defines ISM 2.4Ghz, UNII 5Ghz and 4.9GHz frequencies and channels
 Need to define 3GHz channels/freqs
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'channels'
 __license__ = 'GPLv3'
@@ -79,12 +80,12 @@ def channels(band=None):
       'UNII4'=4GHz}
      :returns:list of channels
     """
-    if band == 'ISM': return ISM_24_C2F.keys()
-    elif band == 'UNII': return UNII_5_C2F.keys() + UNII_4_C2F.keys()
-    elif band == 'UNII4': return UNII_4_C2F.keys()
-    elif band == 'UNII5': return UNII_5_C2F.keys()
+    if band == 'ISM': return list(ISM_24_C2F.keys())
+    elif band == 'UNII': return list(UNII_5_C2F.keys()) + list(UNII_4_C2F.keys())
+    elif band == 'UNII4': return list(UNII_4_C2F.keys())
+    elif band == 'UNII5': return list(UNII_5_C2F.keys())
     try:
-        return sorted(ISM_24_C2F.keys() + UNII_5_C2F.keys() + UNII_4_C2F.keys())
+        return sorted(list(ISM_24_C2F.keys()) + list(UNII_5_C2F.keys()) + list(UNII_4_C2F.keys()))
     except TypeError:
         # python 3 doesn't like the above (uses dict_keys obj instead of list)
         return sorted(list(ISM_24_C2F.keys()) + list(UNII_5_C2F.keys()) + list(UNII_4_C2F.keys()))
@@ -97,10 +98,10 @@ def freqs(band=None):
      :returns:list of frequencies
     """
     if band == 'ISM': return sorted(ISM_24_F2C.keys())
-    elif band == 'UNII': return sorted(UNII_5_F2C.keys() + UNII_4_F2C.keys())
+    elif band == 'UNII': return sorted(list(UNII_5_F2C.keys()) + list(UNII_4_F2C.keys()))
     elif band == 'UNII4': return sorted(UNII_4_F2C.keys())
     elif band == 'UNII5': return sorted(UNII_5_F2C.keys())
-    return sorted(ISM_24_F2C.keys() + UNII_5_F2C.keys()+ UNII_4_F2C.keys())
+    return sorted(list(ISM_24_F2C.keys()) + list(UNII_5_F2C.keys())+ list(UNII_4_F2C.keys()))
 
 def ch2rf(c):
     """

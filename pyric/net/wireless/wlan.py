@@ -23,6 +23,7 @@ Definition of constants et al found in IEEE Std 802.11-2012
 
 Std will refer to IEEE Std 802.11-2012
 """
+from __future__ import unicode_literals
 
 __name__ = 'wlan'
 __license__ = 'GPLv3'

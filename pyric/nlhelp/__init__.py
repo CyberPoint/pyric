@@ -28,6 +28,7 @@ Documentation to include lookup functionality for nl80211 commands and attribute
   o name changes
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'nlhelp'
 __license__ = 'GPLv3'

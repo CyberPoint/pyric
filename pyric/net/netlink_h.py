@@ -33,6 +33,7 @@ are permitted provided that the following conditions are met:
 A port of netlink.h, netlink/attr.h netlink/errno.h to python
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'netlink_h'
 __license__ = 'GPLv3'

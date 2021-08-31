@@ -49,6 +49,7 @@ NOTE:
  2. Have removed *_AFTER_LAST and only kept MAX_* for enums for those nums
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'nl80211_h'
 __license__ = 'GPLv3'
@@ -61,7 +62,9 @@ __status__ = 'Production'
 
 import struct
 
-NL80211_GENL_NAME = 'nl80211'
+# UPGRADE: OMFG, this was such a PITA to track down duing the upgrade
+#          process
+NL80211_GENL_NAME = 'nl80211'.encode('ascii')
 
 """ new in kernel 4 """
 NL80211_MULTICAST_GROUP_CONFIG   = "config"

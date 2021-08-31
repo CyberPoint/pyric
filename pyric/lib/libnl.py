@@ -29,6 +29,10 @@ Provides access to netlink sockets and messages in a manner similar to libnl.
 see http://www.carisma.slowglass.com/~tgr/libnl/doc/core.html
 
 """
+from __future__ import division
+from __future__ import unicode_literals
+
+from builtins import bytes
 
 __name__ = 'libnl'
 __license__ = 'GPLv3'
@@ -725,7 +729,7 @@ def _maxbufsz_():
     fin = None
     try:
         fin = open('/proc/sys/net/core/rmem_max')
-        return int(fin.read().strip()) / 2
+        return int(fin.read().strip()) // 2
     except (IOError,ValueError):
         # return a hardcoded value
         return 2097152

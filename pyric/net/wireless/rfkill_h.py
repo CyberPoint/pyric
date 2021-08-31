@@ -49,6 +49,7 @@ NOTE:
   if the index does not exist
   
 """
+from __future__ import unicode_literals
 
 __name__ = 'rfkill_h'
 __license__ = 'GPLv3'

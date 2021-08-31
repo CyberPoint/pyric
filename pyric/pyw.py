@@ -69,6 +69,12 @@ NOTE:
     if they desire
 
 """
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import print_function
+
+from builtins import str
+from builtins import hex
 
 __name__ = 'pyw'
 __license__ = 'GPLv3'
@@ -96,6 +102,7 @@ import pyric.net.sockios_h as sioch             # sockios constants
 import pyric.net.if_h as ifh                    # ifreq structure
 import pyric.lib.libio as io                    # ioctl (library) functions
 import os
+import traceback
 
 _FAM80211ID_ = None
 
@@ -126,7 +133,7 @@ def interfaces():
         if fin: fin.close()
 
     # the remaining lines are <dev>: p1 p2 ... p3, split on ':' & strip whitespace
-    return [d.split(':')[0].strip() for d in ds]
+    return [d.split(':')[0].strip().encode() for d in ds]
 
 def isinterface(dev):
     """
@@ -148,6 +155,7 @@ def winterfaces(iosock=None):
 
     wifaces = []
     for dev in interfaces():
+        print(dev)
         if iswireless(dev, iosock): wifaces.append(dev)
     return wifaces
 
@@ -159,6 +167,7 @@ def iswireless(dev, iosock=None):
     :param iosock: ioctl socket
     :returns: {True:device is wireless|False:device is not wireless/not present}
     """
+    dev = dev.encode('ascii')
     if iosock is None: return _iostub_(iswireless, dev)
 
     try:
@@ -1706,7 +1715,7 @@ def link(card, nlsock=None):
             if idx == nl80211h.NL80211_BSS_FREQUENCY:
                 info['freq'] = struct.unpack_from('I', attr, 0)[0]
             if idx == nl80211h.NL80211_BSS_SIGNAL_MBM:
-                info['rss'] = struct.unpack_from('i', attr, 0)[0] / 100
+                info['rss'] = struct.unpack_from('i', attr, 0)[0] // 100
             if idx == nl80211h.NL80211_BSS_INFORMATION_ELEMENTS:
                 """
                   hack the proprietary info element attribute: (it should
@@ -1743,7 +1752,7 @@ def link(card, nlsock=None):
                       'failed': sinfo['tx-failed'],
                       'retries': sinfo['tx-retries'],
                       'bitrate': {'rate': sinfo['tx-bitrate']['rate']}}
-        if sinfo['tx-bitrate'].has_key('mcs-index'):
+        if 'mcs-index' in sinfo['tx-bitrate']:
             info['tx']['bitrate']['mcs-index'] = sinfo['tx-bitrate']['mcs-index']
             info['tx']['bitrate']['gi'] = sinfo['tx-bitrate']['gi']
             info['tx']['bitrate']['width'] = sinfo['tx-bitrate']['width']
@@ -1751,7 +1760,7 @@ def link(card, nlsock=None):
         info['rx'] = {'bytes': sinfo['rx-bytes'],
                       'pkts':sinfo['rx-pkts'],
                       'bitrate': {'rate': sinfo['rx-bitrate']['rate']}}
-        if sinfo['rx-bitrate'].has_key('mcs-index'):
+        if 'mcs-index' in sinfo['rx-bitrate']:
             info['rx']['bitrate']['mcs-index'] = sinfo['rx-bitrate']['mcs-index']
             info['rx']['bitrate']['gi'] = sinfo['rx-bitrate']['gi']
             info['rx']['bitrate']['width'] = sinfo['rx-bitrate']['width']
@@ -2086,7 +2095,7 @@ def _band_rfs_(rs):
             elif rfi == nl80211h.NL80211_FREQUENCY_ATTR_DISABLED:
                 rfd['enabled'] = False
             elif rfi == nl80211h.NL80211_FREQUENCY_ATTR_MAX_TX_POWER: # in mBm
-                rfd['max-tx'] = struct.unpack_from('I', rfattr, 0)[0] / 100
+                rfd['max-tx'] = struct.unpack_from('I', rfattr, 0)[0] // 100
             elif rfi == nl80211h.NL80211_FREQUENCY_ATTR_NO_HT40_MINUS:
                 rfd['not-permitted'].append('HT40-')
             elif rfi == nl80211h.NL80211_FREQUENCY_ATTR_NO_HT40_PLUS:

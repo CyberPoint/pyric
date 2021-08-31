@@ -31,6 +31,7 @@ A port of genetlink.h to python and defines the nla_policy for generic netlink
 attributes.
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'genetlink_h'
 __license__ = 'GPLv3'

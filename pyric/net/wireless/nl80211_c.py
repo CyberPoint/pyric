@@ -23,6 +23,7 @@ are permitted provided that the following conditions are met:
 A port of nla_policy definitions found in nl80211.c to python
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'nl80211_c'
 __license__ = 'GPLv3'

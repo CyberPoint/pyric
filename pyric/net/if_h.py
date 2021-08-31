@@ -47,7 +47,9 @@ from socket.h to python
   2) defines the sockaddr struct from netint/in.h
 
 """
+from __future__ import unicode_literals
 
+from builtins import bytes
 __name__ = 'if_h'
 __license__ = 'GPLv3'
 __version__ = '0.0.3'

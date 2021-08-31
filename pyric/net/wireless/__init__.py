@@ -26,6 +26,7 @@ are permitted provided that the following conditions are met:
    - added nl80211_parse_freqs to parse out supported frequencies
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'wireless'
 __license__ = 'GPLv3'

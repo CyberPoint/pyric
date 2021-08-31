@@ -35,6 +35,7 @@ Linux header ports for netlink et al.
   o commented out sockios flags that are not currently being used
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'net'
 __license__ = 'GPLv3'

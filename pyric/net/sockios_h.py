@@ -42,6 +42,7 @@ are permitted provided that the following conditions are met:
 Most of these constants are not used but are left as is for possible future use.
 
 """
+from __future__ import unicode_literals
 
 __name__ = 'sockios_h'
 __license__ = 'GPLv3'

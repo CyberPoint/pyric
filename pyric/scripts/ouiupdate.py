@@ -24,6 +24,7 @@ Fetchs and stores oui data from IEEE
 
 """
 from __future__ import print_function  # python 2to3 compability
+from __future__ import unicode_literals
 
 #__name__ = 'ouiupdate'
 __license__ = 'GPLv3'
